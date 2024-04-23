@@ -3,11 +3,22 @@
 "use strict";
 
 // 앱 설정
+const port = 3000,
+    express = require('express'),
+    layouts = require('express-ejs-layouts'),
+    homeController = require('./controllers/homeController'),
+    errorController = require('./controllers/errorController'),
+    app = express();
 
 /**
  * Listing 12.7 (p. 179)
  * ejs 레이아웃 렌더링
  */
+app.set("port", process.env.PORT || port);
+app.set("view engine", "ejs");
+
+app.use(layouts);; //layout.ejs를 쓸 수 있다.
+app.use(express.static("public"));// 정적 파일 디렉토리
 
 
 /**
